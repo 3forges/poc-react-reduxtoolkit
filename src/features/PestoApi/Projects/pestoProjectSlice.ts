@@ -220,7 +220,8 @@ const pestoProjectSlice = createSlice({
  * @param state
  * @returns (string[])
  */
-export const request_Feedback = (state: RootState) => state.pestoProject.feedbacks
+export const request_Feedback = (state: RootState) =>
+  state.pestoProject.feedbacks
 /**
  * REQUEST VALUE STORE
  *

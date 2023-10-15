@@ -4,9 +4,8 @@
   border: solid 0px blue;
   padding: 0px;
   margin-bottom: 15px;
-
 }
-.ProjectCard ul{
+.ProjectCard ul {
   font-size: 16px;
   list-style-type: none;
   margin-bottom: 5px;
@@ -23,7 +22,7 @@
   align-items: center;
 }
 
-.ProjectCard ul>li>span:nth-child(odd) {
+.ProjectCard ul > li > span:nth-child(odd) {
   color: #fff;
   background-color: #535353;
   text-align: left;
@@ -33,7 +32,7 @@
   font-weight: 900;
   grid-row: 1;
 }
-.ProjectCard ul>li>span:nth-child(even) {
+.ProjectCard ul > li > span:nth-child(even) {
   text-align: right;
   grid-row: 1;
   padding-right: 20px;
