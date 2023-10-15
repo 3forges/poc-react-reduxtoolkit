@@ -157,19 +157,33 @@ export const CreateProject = (data: PestoProjectApiEntity) => {
 }
 /**
  * FUNCTION TO REQUEST PROJECT LIST
+ *
+ *  use `< ... onClick={() => dispatch(RequestProjectList())}>`
  * @returns [json] (PestoProjectApiEntity[])
  */
 export const RequestProjectList = () => {
   return requestPestoApiAsync(API_LIST_ALL_ENTITY)
 }
-// Update
+/**
+ * FONCTION UPDATE PROJECT
+ *
+ *  use `< ... onClick={() => dispatch(UpdateProjectById(data))}>`
+ * @param data (PestoProjectApiEntity)
+ * @returns void
+ */
 export const UpdateProjectById = (data: PestoProjectApiEntity) => {
   console.log(data)
   API_UPDATE_FROM_PROJECT_BY_ID.url = "/" + data._id
   API_UPDATE_FROM_PROJECT_BY_ID.data = data
   return requestPestoApiAsync(API_UPDATE_FROM_PROJECT_BY_ID)
 }
-// Delete
+/**
+ * FUNCTION DELETE PROJECT
+ *
+ *  use `< ... onClick={() => dispatch(DeleteProjectById(item._id))}>`
+ * @param id (string)
+ * @returns void
+ */
 export const DeleteProjectById = (id: string) => {
   API_DELETE_ENTITY_BY_ID.url = "/" + id
   return requestPestoApiAsync(API_DELETE_ENTITY_BY_ID)

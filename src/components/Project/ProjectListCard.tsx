@@ -55,7 +55,7 @@ export function ProjectListCard(props: ListProps): JSX.Element {
             className="button"
             aria-label="Edit"
             onClick={async () => {
-              await dispatch(DeleteProjectById("" + item._id))
+              await dispatch(DeleteProjectById(item._id))
               dispatch(RequestProjectList())
             }}
           >

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import {
   RequestProjectList,
+  PestoProjectApiEntity,
   request_Output,
 } from "../features/PestoApi/Projects/pestoProjectSlice"
 import { CreateNewProject } from "../components/Project/CreateNewProject"
@@ -27,7 +28,8 @@ interface Filter {
  */
 export function PestoProjectUI(): JSX.Element {
   const dispatch = useAppDispatch()
-  let requestOutput: any = useAppSelector(request_Output)
+  let requestOutput: PestoProjectApiEntity[] | any =
+    useAppSelector(request_Output)
   const [filter, SetFilter] = useState<Filter>({ target: 0, value: "" })
 
   // JS FOR MODAL
@@ -50,24 +52,24 @@ export function PestoProjectUI(): JSX.Element {
     dispatch(RequestProjectList())
   }, [dispatch])
 
-  /* FILTERS [_id, name, git_ssh_uri, description, createdAt, __v]*/
-  const filters = [
-    (item: any) => {
+  /* FILTERS [_id, name, git_ssh_uri, description, createdAt, __v] */
+  const filters: Function[] = [
+    (item: PestoProjectApiEntity | any) => {
       return item._id.replace(filter.value, "") !== item._id
     },
-    (item: any) => {
+    (item: PestoProjectApiEntity | any) => {
       return item.name.replace(filter.value, "") !== item.name
     },
-    (item: any) => {
+    (item: PestoProjectApiEntity | any) => {
       return item.git_ssh_uri.replace(filter.value, "") !== item.git_ssh_uri
     },
-    (item: any) => {
+    (item: PestoProjectApiEntity | any) => {
       return item.description.replace(filter.value, "") !== item.description
     },
-    (item: any) => {
+    (item: PestoProjectApiEntity | any) => {
       return item.createdAt.replace(filter.value, "") !== item.createdAt
     },
-    (item: any) => {
+    (item: PestoProjectApiEntity | any) => {
       // eslint-disable-next-line
       return item.__v == filter.value
     },
@@ -76,6 +78,7 @@ export function PestoProjectUI(): JSX.Element {
     requestOutput = requestOutput.filter(filters[filter.target])
   }
 
+  /* ----------------------- JSX ----------------------- */
   return (
     <div>
       <Feedbacks />
@@ -92,7 +95,7 @@ export function PestoProjectUI(): JSX.Element {
         <input
           type="text"
           id="filter"
-          onChange={(e) =>
+          onChange={(e: any) =>
             SetFilter({ target: filter.target, value: e.target.value })
           }
         />
