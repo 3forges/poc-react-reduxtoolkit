@@ -8,6 +8,10 @@ import {
 import { randomProject } from "../../features/PestoApi/Projects/randomProject" // DEVMODE USEFULL
 import "./project.css"
 
+/**
+ * CREATE PROJECT FORM
+ * @returns RANDOM|EDITED PestoProjectApiEntity
+ */
 export function CreateNewProject(): JSX.Element {
   const [inputValue, setInputValue] = useState<PestoProjectApiEntity>(
     randomProject(),

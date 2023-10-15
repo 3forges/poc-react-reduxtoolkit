@@ -1,6 +1,10 @@
 import { useAppSelector } from "../app/hooks"
 import { request_Feedback } from "../features/PestoApi/Projects/pestoProjectSlice"
 
+/**
+ * REQUEST FEEDBACKS COMPONENT
+ * @returns feedback list (string[])
+ */
 export function Feedbacks(): JSX.Element {
   const requestFeedback: string[] = useAppSelector(request_Feedback)
 

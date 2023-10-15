@@ -39,7 +39,6 @@
   font-weight: 700;
 }
 
-
 .controlBar {
   padding: 0px;
   margin: 0px;
@@ -50,8 +49,9 @@
   background-color: #fff;
   color: #000;
   border-radius: 10px;
-  border: solid 1px #000;
+  border: solid 5px #535353;
   position: absolute;
+  transform: translate(-15px, 10px);
   z-index: 1;
   display: none;
   padding: 10px;

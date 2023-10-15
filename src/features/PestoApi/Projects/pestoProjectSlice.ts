@@ -154,7 +154,10 @@ export const CreateProject = (data: PestoProjectApiEntity) => {
   API_CREATE_CONTENT_TYPE.data = data
   return requestPestoApiAsync(API_CREATE_CONTENT_TYPE)
 }
-// Retrieve
+/**
+ * FUNCTION TO REQUEST PROJECT LIST
+ * @returns json (PestoProjectApiEntity)
+ */
 export const RequestProjectList = () => {
   return requestPestoApiAsync(API_LIST_ALL_ENTITY)
 }
@@ -211,7 +214,17 @@ export const pestoProjectSlice = createSlice({
  *  YOUR STORE FOR ANY PAGES
  *  use  `const maVar = useAppSelector(ROOSTATE VAR)`
  */
+/**
+ * REQUEST FEEDBACKS STORE
+ * @param state
+ * @returns (string[])
+ */
 export const request_Feedback = (state: RootState) => state.pestoApi.feedbacks
+/**
+ * REQUEST VALUE STORE
+ * @param state
+ * @returns json (PestoProjectApiEntity)
+ */
 export const request_Output = (state: RootState) => state.pestoApi.value
 
 export default pestoProjectSlice.reducer
