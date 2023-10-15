@@ -82,13 +82,7 @@ const requestPestoApiAsync = createAsyncThunk(
       return {
         value: data,
         status: "loading",
-        feedbacks: [
-          "succes: " +
-            req.method +
-            " " +
-            req.baseURL +
-            (req.url ? req.url : ""),
-        ],
+        feedbacks: ["succes: " + req.method + " " + (req.url ? req.url : "")],
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

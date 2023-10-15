@@ -24,7 +24,7 @@ export function CreateNewProject(): JSX.Element {
         <br />
         <textarea
           id="source_new"
-          cols={80}
+          cols={50}
           rows={5}
           value={JSON.stringify(inputValue)}
           onChange={(e) => setInputValue(JSON.parse(e.target.value))}

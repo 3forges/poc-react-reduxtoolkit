@@ -5,10 +5,15 @@ import {
   request_Output,
 } from "../features/PestoApi/Projects/pestoProjectSlice"
 import { CreateNewProject } from "../components/Project/CreateNewProject"
-import { Feedbacks } from "../components/Feedbacks"
-import "../components/Project/project.css"
 import { UpdateProject } from "../components/Project/UpdateProject"
 import { ProjectListCard } from "../components/Project/ProjectListCard"
+import { Feedbacks } from "../components/Feedbacks"
+import "../components/Project/project.css"
+
+interface Filter {
+  target: number
+  value: string
+}
 
 /**
  * PROJECT MAIN COMPONENT
@@ -22,28 +27,54 @@ import { ProjectListCard } from "../components/Project/ProjectListCard"
  */
 export function PestoProjectUI(): JSX.Element {
   const dispatch = useAppDispatch()
-  const requestOutput = useAppSelector(request_Output)
+  let requestOutput: any = useAppSelector(request_Output)
+  const [filter, SetFilter] = useState<Filter>({ target: 0, value: "" })
 
   // JS FOR MODAL
   let none: string[] = Array(requestOutput?.length)
   none.fill("none")
   const [modalDisplay, setModalDisplay] = useState<string[]>(none)
-
   function modal(index: number) {
     const tmp: string[] = [...none]
     tmp.splice(index, 1, modalDisplay[index] === "none" ? "block" : "none")
     setModalDisplay(tmp)
   }
-
-  /* INITIALISE modalDisplay Array default "none" */
+  /* INITIALISE modalDisplay Array with default "none" */
   useEffect(() => {
     setModalDisplay(none)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [requestOutput])
+
   /* REQUEST PROJECT-LIST @FIRST LOAD */
   useEffect(() => {
     dispatch(RequestProjectList())
   }, [dispatch])
+
+  /* FILTERS [_id, name, git_ssh_uri, description, createdAt, __v]*/
+  const filters = [
+    (item: any) => {
+      return item._id.replace(filter.value, "") !== item._id
+    },
+    (item: any) => {
+      return item.name.replace(filter.value, "") !== item.name
+    },
+    (item: any) => {
+      return item.git_ssh_uri.replace(filter.value, "") !== item.git_ssh_uri
+    },
+    (item: any) => {
+      return item.description.replace(filter.value, "") !== item.description
+    },
+    (item: any) => {
+      return item.createdAt.replace(filter.value, "") !== item.createdAt
+    },
+    (item: any) => {
+      // eslint-disable-next-line
+      return item.__v == filter.value
+    },
+  ]
+  if (filter.value !== "" && requestOutput.length > 0) {
+    requestOutput = requestOutput.filter(filters[filter.target])
+  }
 
   return (
     <div>
@@ -58,6 +89,29 @@ export function PestoProjectUI(): JSX.Element {
         >
           LIST PROJECTS
         </button>
+        <input
+          type="text"
+          id="filter"
+          onChange={(e) =>
+            SetFilter({ target: filter.target, value: e.target.value })
+          }
+        />
+        <select
+          id="filterTarget"
+          onChange={(e: any) =>
+            SetFilter({
+              target: Math.floor(e.target.value * 1),
+              value: filter.value,
+            })
+          }
+        >
+          <option value="0">_id</option>
+          <option value="1">name</option>
+          <option value="2">git_ssh_uri</option>
+          <option value="3">description</option>
+          <option value="4">createdAt</option>
+          <option value="5">__v</option>
+        </select>
         <div className="projects">
           {requestOutput &&
             requestOutput[0] &&

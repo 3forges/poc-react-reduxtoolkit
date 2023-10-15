@@ -35,7 +35,7 @@ export function randomProject(): PestoProjectApiEntity {
     ]
     let word: string = ""
     for (let i: number = 0; i < 5 + Math.round(Math.random() * 5); i++) {
-      word += char[Math.round(Math.random() * 26)]
+      word += char[Math.round(Math.random() * 25)]
     }
     return word
   }
