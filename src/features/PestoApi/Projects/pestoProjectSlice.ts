@@ -149,14 +149,21 @@ export const API_DELETE_ENTITY_BY_ID: AxiosRequest = {
  *  use `< ... onclick={dispatch(DeleteProjectById(DATA))}>`
  * --------------------------------------------------------------
  */
-// Create
+
+/**
+ * FUNCTION TO CREATE A NEW PROJECT
+ *
+ *  use `< ... onclick={dispatch(CreateProject(data))}>`
+ * @param data (PestoProjectApiEntity)
+ * @returns request to api
+ */
 export const CreateProject = (data: PestoProjectApiEntity) => {
   API_CREATE_CONTENT_TYPE.data = data
   return requestPestoApiAsync(API_CREATE_CONTENT_TYPE)
 }
 /**
  * FUNCTION TO REQUEST PROJECT LIST
- * @returns json (PestoProjectApiEntity)
+ * @returns [json] (PestoProjectApiEntity[])
  */
 export const RequestProjectList = () => {
   return requestPestoApiAsync(API_LIST_ALL_ENTITY)

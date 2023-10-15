@@ -1,9 +1,10 @@
-import { useAppDispatch } from "../app/hooks"
+import { useAppDispatch } from "../../app/hooks"
 import {
   RequestProjectList,
   PestoProjectApiEntity,
   DeleteProjectById,
-} from "../features/PestoApi/Projects/pestoProjectSlice"
+} from "../../features/PestoApi/Projects/pestoProjectSlice"
+
 interface ListProps {
   json: object | PestoProjectApiEntity
   callback: Function
@@ -17,7 +18,7 @@ interface ListProps {
  *  callback: FUNCTION  => (optional) parent javascript for buttons
  * @returns PROJECT-CARD + BUTTONS (optional)
  */
-export function BasicListCard(props: ListProps): JSX.Element {
+export function ProjectListCard(props: ListProps): JSX.Element {
   //console.log(props)
   const dispatch = useAppDispatch()
   const item: any = props.json

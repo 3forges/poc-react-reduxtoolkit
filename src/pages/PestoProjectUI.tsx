@@ -8,7 +8,7 @@ import { CreateNewProject } from "../components/Project/CreateNewProject"
 import { Feedbacks } from "../components/Feedbacks"
 import "../components/Project/project.css"
 import { UpdateProject } from "../components/Project/UpdateProject"
-import { BasicListCard } from "../components/BasicListCard"
+import { ProjectListCard } from "../components/Project/ProjectListCard"
 
 /**
  * PROJECT MAIN COMPONENT
@@ -81,7 +81,7 @@ export function PestoProjectUI(): JSX.Element {
                   </div>
                   {/* WITHOUT MODAL: <div> <UpdateProject data={item} /> </div> */}
 
-                  <BasicListCard
+                  <ProjectListCard
                     json={item}
                     callback={() => {
                       modal(index)
