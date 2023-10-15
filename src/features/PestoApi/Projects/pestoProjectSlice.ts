@@ -37,24 +37,18 @@ export type PestoProjectApiEntity = {
   identifier?: string
   __v?: number
 }
-
-type PestoAnotherTypeData = {
-  _id: number
-  data: object
-}
-
 // AXIOS REQUEST READY
 export type AxiosRequest = {
   baseURL: urls
   url?: string
   method: methods
-  data?: PestoProjectApiEntity | PestoAnotherTypeData
+  data?: PestoProjectApiEntity
   headers?: ApiHeader
 }
 
 // PESTO REQUEST STATE
 interface PestoApiRequestState {
-  value?: PestoProjectApiEntity[] | PestoAnotherTypeData[]
+  value?: PestoProjectApiEntity[]
   status: "idle" | "loading" | "failed"
   feedbacks: string[]
 }
@@ -74,9 +68,7 @@ const requestPestoApiAsync = createAsyncThunk(
   "pestoApi/request",
   async (req: AxiosRequest): Promise<PestoApiRequestState> => {
     try {
-      const { data } = await axios<
-        PestoProjectApiEntity[] | PestoAnotherTypeData[]
-      >(req)
+      const { data } = await axios<PestoProjectApiEntity[]>(req)
 
       return {
         value: data,
@@ -190,8 +182,8 @@ export const DeleteProjectById = (id: string) => {
 
   The reducer argument is passed to createReducer().
  */
-export const pestoProjectSlice = createSlice({
-  name: "pestoApi",
+const pestoProjectSlice = createSlice({
+  name: "pestoProject",
   initialState,
   reducers: {
     /* EMPTY */
@@ -228,7 +220,7 @@ export const pestoProjectSlice = createSlice({
  * @param state
  * @returns (string[])
  */
-export const request_Feedback = (state: RootState) => state.pestoApi.feedbacks
+export const request_Feedback = (state: RootState) => state.pestoProject.feedbacks
 /**
  * REQUEST VALUE STORE
  *
@@ -236,6 +228,6 @@ export const request_Feedback = (state: RootState) => state.pestoApi.feedbacks
  * @param state
  * @returns json (PestoProjectApiEntity)
  */
-export const request_Output = (state: RootState) => state.pestoApi.value
+export const request_Output = (state: RootState) => state.pestoProject.value
 
 export default pestoProjectSlice.reducer

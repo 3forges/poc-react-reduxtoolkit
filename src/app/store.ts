@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
-import pestoApiReducer from "../features/PestoApi/Projects/pestoProjectSlice"
+import pestoProjectReducer from "../features/PestoApi/Projects/pestoProjectSlice"
 
 export const store = configureStore({
   reducer: {
-    pestoApi: pestoApiReducer,
+    pestoProject: pestoProjectReducer,
   },
 })
 
