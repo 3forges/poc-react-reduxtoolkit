@@ -1,11 +1,11 @@
-import { PestoProject } from "./features/PestoApi/Projects/PestoProject"
+import { PestoProjectUI } from "./pages/PestoProjectUI"
 import "./App.css"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <PestoProject />
+        <PestoProjectUI />
       </header>
     </div>
   )

@@ -1,0 +1,59 @@
+.ProjectCard {
+  display: block;
+  font-size: 14px;
+  border: solid 0px blue;
+  padding: 0px;
+  margin-bottom: 15px;
+}
+.ProjectCard ul {
+  font-size: 16px;
+  list-style-type: none;
+  margin-bottom: 5px;
+  /* border: solid 1px; */
+  padding: 0px;
+}
+
+.ProjectCard ul li {
+  display: grid;
+  border: solid 1px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  margin: 1px;
+  align-items: center;
+}
+
+.ProjectCard ul > li > span:nth-child(odd) {
+  color: #fff;
+  background-color: #535353;
+  text-align: left;
+  padding: 5px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: 900;
+  grid-row: 1;
+}
+.ProjectCard ul > li > span:nth-child(even) {
+  text-align: right;
+  grid-row: 1;
+  padding-right: 20px;
+  font-weight: 700;
+}
+
+.controlBar {
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+}
+
+.modal {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  border: solid 5px #535353;
+  position: absolute;
+  transform: translate(-15px, 10px);
+  z-index: 1;
+  display: none;
+  padding: 10px;
+  padding-top: 20px;
+}
