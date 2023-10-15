@@ -1,9 +1,9 @@
 import { PestoProjectApiEntity } from "./pestoProjectSlice"
 /**
- * FEED RANDOM WORD FOR NEW REQUEST VARS FEED
- * @returns string (length 5 to 10)
+ * FEED RANDOM JSON FOR NEW-PROJECT-REQUEST
+ * @returns PestoProjectApiEntity json object
  */
-export function randomProject() {
+export function randomProject(): PestoProjectApiEntity {
   function randomWords() {
     const char: string[] = [
       "a",
@@ -44,5 +44,5 @@ export function randomProject() {
     description: randomWords() + " " + randomWords() + " " + randomWords(),
     git_ssh_uri: "git@github.com:" + randomWords() + "/" + randomWords(),
   }
-  return JSON.stringify(ret)
+  return ret
 }

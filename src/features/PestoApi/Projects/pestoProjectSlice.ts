@@ -57,20 +57,17 @@ export type AxiosRequest = {
 interface PestoApiRequestState {
   value?: PestoProjectApiEntity[] | PestoAnotherTypeData[]
   status: "idle" | "loading" | "failed"
-
   feedbacks: string[]
 }
 
 const initialState: PestoApiRequestState = {
   value: [],
   status: "idle",
-
   feedbacks: [],
 }
 
 const ERROR_FEEDBACK: PestoApiRequestState = {
   status: "failed",
-
   feedbacks: [],
 }
 

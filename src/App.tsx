@@ -1,4 +1,4 @@
-import { PestoProject } from "./features/PestoApi/Projects/PestoProject"
+import { PestoProject } from "./pages/PestoProject"
 import "./App.css"
 
 function App() {
