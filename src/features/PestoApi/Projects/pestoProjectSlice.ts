@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../../../app/store"
 import axios from "axios"
-// import { useAppDispatch } from "../../../app/hooks"
 
 const API_PORT = "3000"
 const API_HOST = "localhost"
@@ -89,11 +88,7 @@ const requestPestoApiAsync = createAsyncThunk(
         ERROR_FEEDBACK.feedbacks.splice(0, 0, "Axios Error: " + error.message)
         return ERROR_FEEDBACK
       } else {
-        ERROR_FEEDBACK.feedbacks.splice(
-          0,
-          0,
-          "An unexpected error occurred: " + error,
-        )
+        ERROR_FEEDBACK.feedbacks.splice(0, 0, "Unexpected error: " + error)
         return ERROR_FEEDBACK
       }
     }
