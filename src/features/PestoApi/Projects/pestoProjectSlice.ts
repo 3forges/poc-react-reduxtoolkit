@@ -133,21 +133,17 @@ export const API_DELETE_ENTITY_BY_ID: AxiosRequest = {
     "Content-Type": "application/json",
   },
 }
+
 /**
  * --------------------------------------------------------------
- *              METHODS FOR YOUR PAGES
- *
- *  use `< ... onclick={dispatch(CreateProject())}>`
- *  use `< ... onclick={dispatch(RequestProjectList())}>`
- *  use `< ... onclick={dispatch(UpdateProjectById(DATA))}>`
- *  use `< ... onclick={dispatch(DeleteProjectById(DATA))}>`
- * --------------------------------------------------------------
+ *                   METHODS FOR YOUR PAGES
+ *  --------------------------------------------------------------
  */
 
 /**
  * FUNCTION TO CREATE A NEW PROJECT
  *
- *  use `< ... onclick={dispatch(CreateProject(data))}>`
+ *  use: `< ... onclick={dispatch(CreateProject(data))}>`
  * @param data (PestoProjectApiEntity)
  * @returns request to api
  */
@@ -158,7 +154,7 @@ export const CreateProject = (data: PestoProjectApiEntity) => {
 /**
  * FUNCTION TO REQUEST PROJECT LIST
  *
- *  use `< ... onClick={() => dispatch(RequestProjectList())}>`
+ *  use: `< ... onClick={() => dispatch(RequestProjectList())}>`
  * @returns [json] (PestoProjectApiEntity[])
  */
 export const RequestProjectList = () => {
@@ -167,7 +163,7 @@ export const RequestProjectList = () => {
 /**
  * FONCTION UPDATE PROJECT
  *
- *  use `< ... onClick={() => dispatch(UpdateProjectById(data))}>`
+ *  use: `< ... onClick={() => dispatch(UpdateProjectById(data))}>`
  * @param data (PestoProjectApiEntity)
  * @returns void
  */
@@ -180,7 +176,7 @@ export const UpdateProjectById = (data: PestoProjectApiEntity) => {
 /**
  * FUNCTION DELETE PROJECT
  *
- *  use `< ... onClick={() => dispatch(DeleteProjectById(item._id))}>`
+ *  use: `< ... onClick={() => dispatch(DeleteProjectById(item._id))}>`
  * @param id (string)
  * @returns void
  */
@@ -227,16 +223,21 @@ export const pestoProjectSlice = createSlice({
 
 /**
  *  YOUR STORE FOR ANY PAGES
- *  use  `const maVar = useAppSelector(ROOSTATE VAR)`
+ *
+ *  use:  `const maVar = useAppSelector(ROOSTATE VAR)`
  */
 /**
  * REQUEST FEEDBACKS STORE
+ *
+ *  use:  `const maVar = useAppSelector(request_Feedback)`
  * @param state
  * @returns (string[])
  */
 export const request_Feedback = (state: RootState) => state.pestoApi.feedbacks
 /**
  * REQUEST VALUE STORE
+ *
+ *  use:  `const maVar = useAppSelector(request_Output)`
  * @param state
  * @returns json (PestoProjectApiEntity)
  */
